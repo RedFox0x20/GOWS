@@ -198,7 +198,7 @@ int main(int argc, char **argv)
 			}
 
 			strcpy(RequestFilePathBuffer+ServerRootStrlen-1, RequestedFilePath);
-			
+
 			/* Open the requested file */
 			printf("Getting file: %s\n", RequestFilePathBuffer); 
 			FILE *F = fopen(RequestFilePathBuffer, "r");
