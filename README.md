@@ -21,3 +21,14 @@ requests in addition to returning the same response when a non-GET request is
 received.
 
 `$ sudo ./GOWS`
+
+_ NOTE _
+After playing around with this I have recognised that there will be errors
+thrown if there is an attempt to put parameters after the filename in a get
+request. This will ofcourse break some things however this is designed for
+static sites, so please don't try to use it for things it wasn't written for
+(until it is).
+
+You can however make references to elements in links such as:
+`localhost/index.html#AboutElement`
+as these are handled by the browser and not the HTTP server.
