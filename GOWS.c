@@ -7,7 +7,7 @@
 static int ListenerSocket = 0,
 		   ListenerSocketOptions = 1,
 		   ListenerSocketLen = sizeof(struct sockaddr_in),
-		   ListenerPort = 80;
+		   ListenerPort = 8080;
 
 static struct sockaddr_in ListenerSocketAddr;
 
@@ -124,7 +124,7 @@ int main(int argc, char **argv)
 			recv(ConnectingSocket, RequestStr, 512, 0);
 			while (*RequestStrPtr != 0)
 			{
-				if (*RequestStrPtr == ' ')
+				if (*RequestStrPtr == ' ' || *RequestStrPtr == '?')
 				{
 					*RequestStrPtr = 0;
 				}
@@ -229,7 +229,7 @@ int main(int argc, char **argv)
 			}
 			strcpy(ResponseBuffer, OKHeaderStr);
 			/* Read the file into the buffer */
-			fread(ResponseBuffer, 1, FileLength, F);
+			fread(ResponseBuffer+strlen(OKHeaderStr), 1, FileLength, F);
 			send(
 					ConnectingSocket,
 					ResponseBuffer,
